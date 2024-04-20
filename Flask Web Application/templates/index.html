@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KaayaClique</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #FF0000; /* Changed title color to green */
+      font-weight: bold; /* Added bold font weight */
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.8); /* Transparent white background */
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body style="background-image: url('https://png.pngtree.com/background/20210711/original/pngtree-simple-skin-care-cosmetics-promotion-picture-image_1097040.jpg'); background-size: cover; background-position: center; margin: 0; padding: 0;">
+
+  <h1>KaayaClique</h1>
+  {% if output %}
+    <center><p>{{ output }}</p></center>
+  {% endif %}
+  <form action="/predict" method="post">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br>
+
+    <label for="daily_water_intake">Daily Water Intake (in ml):</label>
+    <input type="number" id="daily_water_intake" name="daily_water_intake" required><br>
+
+    <label for="sleep_duration">Sleep Duration (in hours):</label>
+    <input type="number" id="sleep_duration" name="sleep_duration" required><br>
+
+    <label for="exercise_frequency">Exercise Frequency (per week):</label>
+    <input type="number" id="exercise_frequency" name="exercise_frequency" required><br>
+
+    <label for="sun_exposure">Sun Exposure (hours per day):</label>
+    <input type="number" id="sun_exposure" name="sun_exposure" step="0.01" required><br>
+
+    <label for="stress_level">Stress Level (on a scale of 1-10):</label>
+    <input type="number" id="stress_level" name="stress_level" min="1" max="10" required><br>
+
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select><br>
+
+    <label for="skin_type">Skin Type:</label>
+    <select id="skin_type" name="skin_type" required>
+      <option value="Combination">Combination</option>
+      <option value="Oily">Oily</option>
+      <option value="Sensitive">Sensitive</option>
+      <option value="Dry">Dry</option>
+    </select><br>
+
+    <label for="routine_complexity">Routine Complexity:</label>
+    <select id="routine_complexity" name="routine_complexity" required>
+      <option value="Simple">Simple</option>
+      <option value="Moderate">Moderate</option>
+    </select><br>
+
+    <label for="oily_skin">Do you have oily skin?</label><br>
+    <input type="radio" id="oily_skin_yes" name="oily_skin" value="Yes" required>
+    <label for="oily_skin_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="oily_skin_no" name="oily_skin" value="No">
+    <label for="oily_skin_no">No</label><br><br>
+
+    <label for="pores">Do you have visible pores?</label><br>
+    <input type="radio" id="pores_yes" name="pores" value="Yes" required>
+    <label for="pores_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="pores_no" name="pores" value="No">
+    <label for="pores_no">No</label><br><br>
+
+    <label for="black_heads">Do you have black heads?</label><br>
+    <input type="radio" id="black_heads_yes" name="black_heads" value="Yes" required>
+    <label for="black_heads_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="black_heads_no" name="black_heads" value="No">
+    <label for="black_heads_no">No</label><br><br>
+
+    <label for="acne">Do you have acne?</label><br>
+    <input type="radio" id="acne_yes" name="acne" value="Yes" required>
+    <label for="acne_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="acne_no" name="acne" value="No">
+    <label for="acne_no">No</label><br><br>
+
+    <label for="hyperpigmentation">Do you have hyperpigmentation?</label><br>
+    <input type="radio" id="hyperpigmentation_yes" name="hyperpigmentation" value="Yes" required>
+    <label for="hyperpigmentation_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="hyperpigmentation_no" name="hyperpigmentation" value="No">
+    <label for="hyperpigmentation_no">No</label><br><br>
+
+    <label for="dryness">Do you have dryness?</label><br>
+    <input type="radio" id="dryness_yes" name="dryness" value="Yes" required>
+    <label for="dryness_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="dryness_no" name="dryness" value="No">
+    <label for="dryness_no">No</label><br><br>
+
+    <label for="skin_sensitivity">Do you have skin sensitivity?</label><br>
+    <input type="radio" id="skin_sensitivity_yes" name="skin_sensitivity" value="Yes" required>
+    <label for="skin_sensitivity_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="skin_sensitivity_no" name="skin_sensitivity" value="No">
+    <label for="skin_sensitivity_no">No</label><br><br>
+
+    <label for="aging">Do you see signs of aging?</label><br>
+    <input type="radio" id="aging_yes" name="aging" value="Yes" required>
+    <label for="aging_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="aging_no" name="aging" value="No">
+    <label for="aging_no">No</label><br><br>
+
+    <label for="dark_circles">Do you have dark circles?</label><br>
+    <input type="radio" id="dark_circles_yes" name="dark_circles" value="Yes" required>
+    <label for="dark_circles_yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="radio" id="dark_circles_no" name="dark_circles" value="No">
+    <label for="dark_circles_no">No</label><br><br><br>
+
+    <label for="diet_preferences">Diet Preferences:</label>
+    <select id="diet_preferences" name="diet_preferences" required>
+      <option value="Eggetarian">Eggetarian</option>
+      <option value="Non-Vegetarian">Non-Vegetarian</option>
+      <option value="Vegan">Vegan</option>
+      <option value="Vegetarian">Vegetarian</option>
+    </select><br><br>
+
+    <button type="submit">Predict</button>
+  </form>
+
+</body>
+</html>
