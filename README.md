@@ -1,1 +1,1 @@
-ML based Skin Care Recommendation System
+ML based Skin Care Products Recommendation System
